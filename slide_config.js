@@ -1,10 +1,10 @@
 var SLIDE_CONFIG = {
   // Slide settings
   settings: {
-    title: 'Introdução ao Javascript',
+    title: 'Introdução ao JavaScript',
     subtitle: 'Seminário de Programação Orientada a Objetos',
     eventInfo: {
-      title: '<br/>Introdução ao Javascript',
+      title: '<br/>Introdução ao JavaScript',
       date: '28/04/2016'
     },
     useBuilds: true, // Default: true. False will turn off slide animation builds.

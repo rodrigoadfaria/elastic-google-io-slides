@@ -21,6 +21,7 @@ URL: https://code.google.com/p/io-2012-slides
   <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
   <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
   <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+  <script type='text/javascript' src='./js/index.js'></script>
 </head>
 <body style="opacity: 0">
 
@@ -36,30 +37,156 @@ URL: https://code.google.com/p/io-2012-slides
     <aside class="gdbar"><img src="images/code_programming_js_128.png"></aside>
     <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
     <hgroup class="auto-fadein">
-      <h1 data-config-title><!-- populated from slide_config.json --></h1>
-      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
-      <p data-config-presenter><!-- populated from slide_config.json --></p>
+      <h1 data-config-title></h1>
+      <h2 data-config-subtitle></h2>
+      <p data-config-presenter></p>
     </hgroup>
   </slide>
 
   <slide>
     <hgroup>
-      <h2>Slide with Bullets</h2>
+      <h2>Agenda</h2>
     </hgroup>
     <article>
       <ul>
-        <li>Titles are formatted as Open Sans with bold applied and font size is set at 45</li>
-        <li>Title capitalization is title case
-          <ul>
-            <li>Subtitle capitalization is title case</li>
-          </ul>
-        </li>
-        <li>Subtitle capitalization is title case</li>
-        <li>Titles and subtitles should never have a period at the end</li>
+        <li>JavaScript: Visão Geral</li>
+        <li>JavaScript do lado do cliente
+        <li>Funções e Construtores</li>
+        <li><label class="english">Prototypes</label></li>
+        <li>O <label class="english">Document Object Model</label> (DOM)</li>
+        <li>jQuery</li>
+        <li>Eventos e <label class="english">callbacks</label></li>
+        <li>AJAX: <label class="english">Asynchronous</label> JavaScript e XML</li>
+        <li>Aplicativos de uma única página e JSON APIs</li>
+        <li><label class="english">Tips & Tricks</label></li>
+        <li>Considerações finais: passado, presente e futuro do JavaScript</li>
       </ul>
     </article>
   </slide>
 
+  <slide class="segue dark quote nobackground">
+    <aside class="gdbar right bottom"><img src="images/code_programming_js_128.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <q>
+        O JavaScript teve que se parecer com Java - ser o irmão menor bobo do Java, ou seu sócio refém. Além disso,
+        eu tinha que terminar em dez dias ou algo pior do que o JavaScript teria acontecido.
+      </q>
+      <div class="author">
+        Brendan Eich<br>
+        Criador da linguagem
+      </div>
+    </article>
+    
+    <aside class="note">
+      <section>
+        <p>Brendan Eich é um programador americano e criador da linguagem JavaScript. Ex-chefe do escritório de tecnologia na Mozilla Corporation.
+          Nascimento: 1961, Pittsburgh, Pensilvânia, EUA. Educação: (mestrado) Universidade de Illinois em Urbana-Champaign, (mat e CC) Universidade de Santa Clara
+        </p>
+      </section>
+    </aside>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>JavaScript: Visão Geral</h2>
+    </hgroup>
+    <article>
+      <p>Suas principais características são:</p>
+      <ul class="build">
+        <li>Uma linguagem interpretada</li>
+        <li>Criada na Netscape em 1995 sob o nome Mocha, posteriormente LiveScript, com o objetivo de ser embutida em navegadores web</li>
+        <li>Teve seu nome alterado para JavaScript para pegar carona na popularidade de Java</li>
+        <li>Tipagem dinâmica similar ao Ruby</li>
+        <li>Foi concebida para ser uma linguagem de script com orientação a objetos baseada em protótipos e funções de primeira classe</li>
+      </ul>
+    </article>
+    
+    <aside class="note">
+      <section>
+        <ul>
+          <li>No JavaScript as funções são de primeira classe, isto é, são objetos que possuem propriedades e métodos, e podem ser passados como 
+            argumentos, serem atribuídos a variáveis ou retornados como qualquer outro objeto.</li>
+          <li>Também assume duck typing para avaliação de tipos de objetos</li>
+        </ul>
+      </section>
+    </aside>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>JavaScript: Visão Geral</h2>
+    </hgroup>
+    <article>
+      <p>Atualmente, existem quatro maneiras principais de usar JavaScript no ecossistema SaaS:</p>
+      <ul class="build">
+        <li>Usar o JavaScript para realçar a experiência do usuário de uma aplição SaaS que segue o padrão MVC</li>
+        <li>Criar aplicações de uma única página (SPA)</li>
+        <li>Aplicações complexas do lado do cliente como Google Docs, capazes de funcionar até mesmo quando não conectadas à Internet</li>
+        <li>Usar em aplicações do lado do servidor, similar ao que fazemos com Rails, utilizando arcabouços como <b>Node.js</b></li>
+      </ul>
+    </article>
+    
+    <aside class="note">
+      <section>
+        <ul>
+          <li>O primeiro caso é o mais comum, aliado com HTML e CSS</li>
+          <li>O segundo é quando usamos comunicação com o servidor usando AJAX e processando objetos XML/JSON</li>
+        </ul>
+      </section>
+    </aside>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>JavaScript: Visão Geral</h2>
+    </hgroup>
+    <article>
+      <p>Como boa prática, é importante lembrar da <b>degradação graciosa</b> que define uma experiência de usuário de um site satisfatória mesmo quando não há suporte a JavaScript.</p>
+      <p>Além disso, o código JavaScript deve ser <b>discreto</b>, ou seja, deve ser mantido completamente fora das páginas <label id="discrete" class="blue2">HTML</label>.
+<pre class="prettyprint" data-lang="html">
+&lt;head&gt;
+  &lt;script type='text/javascript'&gt;
+    function helloWorld(world) {...}
+  &lt;/script&gt;
+&lt;/head&gt;
+<b>
+&lt;head&gt;
+  &lt;&#33;-- Essa é a boa prática que queremos --&gt;
+  &lt;script type='text/javascript' src='./js/index.js'&gt;&lt;/script&gt;
+&lt;/head&gt;
+</b>
+</pre>
+      </p>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>JavaScript: Visão Geral</h2>
+      <h3>"Discretizando"</h3>
+    </hgroup>
+    <article>
+<pre class="prettyprint" data-lang="javascript">
+<b>
+window.onload = function initialize() {
+	init();
+};
+
+function init() {
+    var label = document.getElementById('discrete');
+    if (label) {
+        label.addEventListener('click', helloWorld);
+    }
+};
+
+function helloWorld() {
+    alert('Mantenha o JavaScript discreto :)');
+};
+</b>
+</pre>
+    </article>
+  </slide>
+  
   <slide>
     <hgroup>
       <h2>Slide with Bullets that Build</h2>
@@ -152,26 +279,6 @@ function helloWorld(world) {
 &lt;body>
 &lt;/html>
 </pre>
-    </article>
-  </slide>
-
-  <slide>
-    <aside class="note">
-      <section>
-        <ul>
-          <li>Point I wanted to make #1</li>
-          <li>Point I wanted to make #2</li>
-          <li>Point I wanted to make #3</li>
-          <li>Example <a href="#">link</a> in notes.</li>
-        </ul>
-        <p><b>Remember to say this tag line!</b></p>
-      </section>
-    </aside>
-    <hgroup>
-      <h2>Slide with Speaker Notes</h2>
-    </hgroup>
-    <article>
-      <p>Press 'p' to toggle speaker notes.</p>
     </article>
   </slide>
 
@@ -345,19 +452,6 @@ function helloWorld(world) {
       <h2 class="white">Full Image (with Optional Header)</h2>
     </hgroup>
     <footer class="source white">www.flickr.com/photos/25797459@N06/5438799763/</footer>
-  </slide>
-
-  <slide class="segue dark quote nobackground">
-    <aside class="gdbar right bottom"><img src="images/code_programming_js_128.png"></aside>
-    <article class="flexbox vleft auto-fadein">
-      <q>
-        This is an example of quote text.
-      </q>
-      <div class="author">
-        Name<br>
-        Company
-      </div>
-    </article>
   </slide>
 
   <slide>
