@@ -33,6 +33,7 @@ URL: https://code.google.com/p/io-2012-slides
     </article>
   </slide>
 
+
   <slide class="title-slide segue nobackground">
     <aside class="gdbar"><img src="images/code_programming_js_128.png"></aside>
     <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
@@ -42,6 +43,7 @@ URL: https://code.google.com/p/io-2012-slides
       <p data-config-presenter></p>
     </hgroup>
   </slide>
+
 
   <slide>
     <hgroup>
@@ -64,6 +66,7 @@ URL: https://code.google.com/p/io-2012-slides
     </article>
   </slide>
 
+
   <slide class="segue dark quote nobackground">
     <aside class="gdbar right bottom"><img src="images/code_programming_js_128.png"></aside>
     <article class="flexbox vleft auto-fadein">
@@ -85,6 +88,7 @@ URL: https://code.google.com/p/io-2012-slides
       </section>
     </aside>
   </slide>
+  
 
   <slide>
     <hgroup>
@@ -111,6 +115,7 @@ URL: https://code.google.com/p/io-2012-slides
       </section>
     </aside>
   </slide>
+  
 
   <slide>
     <hgroup>
@@ -135,6 +140,7 @@ URL: https://code.google.com/p/io-2012-slides
       </section>
     </aside>
   </slide>
+  
 
   <slide>
     <hgroup>
@@ -159,6 +165,7 @@ URL: https://code.google.com/p/io-2012-slides
       </p>
     </article>
   </slide>
+  
 
   <slide>
     <hgroup>
@@ -187,30 +194,110 @@ function helloWorld() {
     </article>
   </slide>
   
+  
   <slide>
     <hgroup>
-      <h2>Slide with Bullets that Build</h2>
-      <h3>Subtitle Placeholder</h3>
+      <h2>JavaScript do lado do cliente</h2>
     </hgroup>
     <article>
-      <p>A list where items build:</p>
-      <ul class="build">
-        <li>Pressing 'h' highlights code snippets</li>
-        <li>Pressing 'p' toggles speaker notes (if they're on the current slide)</li>
-        <li>Pressing 'f' toggles fullscreen viewing</li>
-        <li>Pressing 'w' toggles widescreen</li>
-        <li>Pressing 'o' toggles overview mode</li>
-        <li>Pressing 'ESC' toggles off these goodies</li>
-      </ul>
-      <p>Another list, but items fade as they build:</p>
+      <p>Apesar do seu nome e sintaxe serem parecidos com Java, o JavaScript tem mais coisas em comum com Ruby:</p>
       <ul class="build fade">
-        <li>Hover over me!</li>
-        <li>Hover over me!</li>
-        <li>Hover over me!</li>
-      </ul>
+        <li>Quase tudo é um objeto. O objeto JavaScript básico é similar ao <label class="english">hash</label> em Ruby, exceto pelo fato de que as chaves devem ser <b>strings</b></li>
+        <li>As variáveis não possuem tipos, mas os objetos aos quais elas se referem possuem</li>
+        <li>Classes e tipos importam ainda menos do quem em Ruby. Aliás, classes sequer existem</li>
+        <li>Funções são fechamentos (<label class="english">closures</label>), que são computados em tempo e local diferentes de onde foram definidas</li>
+        <li>O JavaScript é interpretado e inclui mecanismos de metaprogramação e introspecção</li>
     </article>
   </slide>
+  
 
+  <slide>
+    <hgroup>
+      <h2>JavaScript do lado do cliente</h2>
+      <h3>Sintaxe e construções básicas</h3>
+    </hgroup>
+    <article>
+      <table>
+        <tr>
+          <th>Sintaxe</th><th>Descrição</th>
+        </tr>
+        <tr>
+          <td>Objetos</td><td><b>movie = {title: 'The Godfather', 'release_info': {'year': 1972, rating: 'PG'}}</b>. Você pode acessar a propriedade de um objeto com <b>movie.title</b> ou
+          <b>movie['title']</b>. Também é possível acessar propriedades de objetos aninhados <b>movie.release_info.year</b>.</td>
+        </tr>
+        <tr>
+          <td>Tipos</td><td>Os tipos primitivos são <b>object, string, array, number, boolean, function, undefined</b>. Este último é o equivalente ao <b>nil</b> em Ruby.</td>
+        </tr>
+        <tr>
+          <td>Arrays</td><td>São indexados a partir de zero e crescem dinamicamente. <b>var a = ["Saab", "Volvo", "BMW", 20, {two: 2}];</b></td>
+        </tr>
+        <tr>
+          <td>Números e operadores</td><td>Operadores como <b>+, -, /, *, %</b> fazem operações aritméticas, bem como <b>+=,  ++,  --,  -=</b>. Já o objeto <b>Math</b> permite a realização
+          de outras tarefas matemáticas como <b><br/>Math.min(0, 150, 30, 20, -8, -200); <br/>Math.max(0, 150, 30, 20, -8, -200); <br/>Math.pow(3, 2); <br/>Math.random();</b></td>
+        </tr>
+      </table>
+    </article>
+  </slide>
+  
+
+  <slide>
+    <hgroup>
+      <h2>JavaScript do lado do cliente</h2>
+      <h3>Sintaxe e construções básicas</h3>
+    </hgroup>
+    <article>
+      <table>
+        <tr>
+          <th>Sintaxe</th><th>Descrição</th>
+        </tr>
+        <tr>
+          <td>Strings & RegExp</td><td>Têm funcionamento bem parecido com Ruby. Uma string pode ter a forma <b>"string", 'is also a string', "join string a "+"with b"</b><br/>
+          As trings em JavaScript respondem a funções como <br/><b>var str = "mad, mad world"<br/> str.split(' ')<br/> str.slice(3, 8)<br/> str.slice(-3)<br/> str.indexOf('l')<br/> str.charAt(3)<br/></b><br/>
+          Já as expressões regulares são usadas para encontrar padrões e/ou buscar e substituir strings em textos.<br/>
+          A sintaxe de uma RegExp em JavaScript é da forma <label class="english">/padrão/modificadores</label><br/>
+          <b>var pattern = /GoD/i; var title = 'The godfather is the best movie! Oh my GOD :O'</b><br/>
+          Para avaliar a expressão, pode-se usar um dos seguintes métodos:<br/>
+          <b>pattern.exec(title)</b> ou <b>title.macth(pattern)</b>. Caso nenhuma ocorrência seja encontrada, retorna <b>null</b>.<br/>
+          Também pode-se usar <b>pattern.test(title)</b> que retorna <b>true</b> ou <b>false</b>, mas não captura os grupos.<br/>
+          Alternativamente, pode-se usar <b>var pattern = new RegExp('[Gg]o[Dd]')</b>.
+          </td>
+        </tr>
+      </table>
+    </article>
+  </slide>
+  
+
+  <slide>
+    <hgroup>
+      <h2>JavaScript do lado do cliente</h2>
+      <h3>Sintaxe e construções básicas</h3>
+    </hgroup>
+    <article>
+      <table>
+        <tr>
+          <th>Sintaxe</th><th>Descrição</th>
+        </tr>      
+        <tr>
+          <td>Conversões</td><td>Existem funções da linguagem que podem ser utilizadas para conversões de tipo, tais como, <b>'string' + 15, parseInt('2016'), parseInt('four'), parseFloat('24.4567')</b><br/>
+          Há a possibilidade de indicar a base quando da conversão - <b>parseInt('0101', 2)</b>.
+          </td>
+        </tr>
+        <tr>
+          <td>Booleanos</td><td><b>false, null, undefined, 0, ''</b>(string vazia), <b>NaN</b> são valores booleanos <label class="blue3">false</label>. Por outro lado, <b>true</b> e todos os
+          outros valores são <label class="blue3">true</label></td>
+        </tr>
+        <tr>
+          <td>Nomenclatura de métodos e variáveis</td><td><b>localVar, local_var, ConstructorFunction, GLOBAL</b> são todos convenções da linguagem. JavaScript não tem regra de nomenclatura.
+          A palavra <b>var</b> dentro de funções indica variável local, caso contrário, são variáveis globais.</td>
+        </tr>
+        <tr>
+          <td>Controle de fluxo</td><td>Para controlar o fluxo de código e iterações pode-se utilizar <b>while(), for(;;), if...else, ?:</b> (operador ternário), <b>switch/case, try/catch/throw, return, break</b></td>
+        </tr>
+      </table>
+    </article>
+  </slide>
+  
+  
   <slide>
     <hgroup>
       <h2>Slide with (Smaller Font)</h2>
@@ -223,64 +310,11 @@ function helloWorld() {
     </article>
   </slide>
 
+
   <slide hidden>
     Hidden slides are left out of the presentation.
   </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Code Slide (with Subtitle Placeholder)</h2>
-      <h3>Subtitle Placeholder</h3>
-    </hgroup>
-    <article>
-      <p>Press 'h' to highlight important sections of code (wrapped in <code>&lt;b&gt;</code>).</p>
-      <pre class="prettyprint" data-lang="javascript">
-&lt;script type='text/javascript'&gt;
-  // Say hello world until the user starts questioning
-  // the meaningfulness of their existence.
-  function helloWorld(world) {
-    <b>for (var i = 42; --i &gt;= 0;) {
-      alert('Hello ' + String(world));
-    }</b>
-  }
-&lt;/script&gt;
-</pre>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Code Slide (Smaller Font)</h2>
-    </hgroup>
-    <article class="smaller">
-      <pre class="prettyprint" data-lang="javascript">
-// Say hello world until the user starts questioning
-// the meaningfulness of their existence.
-function helloWorld(world) {
-  for (var i = 42; --i &gt;= 0;) {
-    alert('Hello ' + String(world));
-  }
-}
-</pre>
-<pre class="prettyprint" data-lang="css">
-&lt;style&gt;
-  p { color: pink }
-  b { color: blue }
-&lt;/style&gt;
-</pre>
-<pre class="prettyprint" data-lang="html">
-&lt;!DOCTYPE html>
-&lt;html>
-&lt;head>
-  &lt;title>My Awesome Page&lt;/title>
-&lt;/head>
-&lt;body>
-  &lt;p&gt;Hello world&lt;/p&gt;
-&lt;body>
-&lt;/html>
-</pre>
-    </article>
-  </slide>
+  
 
   <slide>
     <aside class="note">
@@ -301,6 +335,7 @@ function helloWorld(world) {
       <p>Hit <code><a href="?presentme=false" target="_self">?presentme=false</a></code> to disable presenter mode.</p>
     </article>
   </slide>
+  
 
   <slide>
     <hgroup>
@@ -311,6 +346,7 @@ function helloWorld(world) {
       <footer class="source">source: place source info here</footer>
     </article>
   </slide>
+  
 
   <slide>
     <hgroup>
@@ -321,35 +357,7 @@ function helloWorld(world) {
       <footer class="source">source: place source info here</footer>
     </article>
   </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Table Option A</h2>
-      <h3>Subtitle Placeholder</h3>
-    </hgroup>
-    <article>
-      <table>
-        <tr>
-          <th></th><th>Column 1</th><th>Column 2</th><th>Column 3</th><th>Column 4</th>
-        </tr>
-        <tr>
-          <td>Row 1</td><td>placeholder</td><td class="highlight">placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <td>Row 2</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <td>Row 3</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <td>Row 4</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <td>Row 5</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-      </table>
-    </article>
-  </slide>
+  
 
   <slide>
     <hgroup>
