@@ -59,6 +59,7 @@ URL: https://code.google.com/p/io-2012-slides
         <li>jQuery</li>
         <li>Eventos e <label class="english">callbacks</label></li>
         <li>AJAX: <label class="english">Asynchronous</label> JavaScript e XML</li>
+        <li>Testando JavaScript e AJAX</li>
         <li>Aplicativos de uma única página e JSON APIs</li>
         <li><label class="english">Tips & Tricks</label></li>
         <li>Considerações finais: passado, presente e futuro do JavaScript</li>
@@ -300,22 +301,66 @@ function helloWorld() {
   
   <slide>
     <hgroup>
-      <h2>Slide with (Smaller Font)</h2>
+      <h2>JavaScript do lado do cliente</h2>
+      <h3>Ferramentas de depuração</h3>
     </hgroup>
-    <article class="smaller">
+    <article>
       <ul>
-        <li>All <a href="http://google.com">links</a> open in new tabs.</li>
-        <li>To change that this, add <code>target="_self"</code> to the link.</li>
+        <li><a href="http://www.jslint.com/">JSLint</a> que é online e verifica erros e problemas de estilo de acordo com o guia de Doug Crockford - <label class="english">JavaScript: The Good Parts</label></li>
+        <li><a href="http://www.javascriptlint.com/">JavaScript Lint</a> é uma ferramenta de linha de comando que reporta erros e alertas baseada no mesmo interpretador do Firefox</li>
+        <li><a href="https://developers.google.com/closure/">Closure</a> melhora a performance do seu código JavaScript removendo código morto, reportando erros e alertas, além de efetuar a minificação do arquivo</li>
+        <li><a href="http://yui.github.io/yuicompressor/">YUI compressor</a> também é uma ferramenta de minificação, escrita em Java. Também comprime CSS</li>
+        <li><a href="http://jsonlint.com/">JSONlint</a> avalia uma estrutura JSON na tentativa de encontrar erros de sintaxe</li>
+        <li><a href="http://getfirebug.com/whatisfirebug">Firebug</a> é uma das ferramentas mais populares de depuração para aplicações web. Integrado ao Firefox, permite depurar, editar e monitorar
+        CSS, HTML e JavaScript em qualquer aplicação web</li>
       </ul>
     </article>
+    
+    <aside class="note">
+      <section>
+        <ul>
+          <li>O código para mostrar nesse slide está em <a href="http://pastebin.com/gaR9tA4k">json</a></li>
+          <li>Lembrar também das ferramentas de navegadores modernos como o Chrome</li>
+        </ul>
+      </section>
+    </aside>    
   </slide>
 
 
-  <slide hidden>
-    Hidden slides are left out of the presentation.
+  <slide>
+    <hgroup>
+      <h2>JavaScript do lado do cliente</h2>
+      <h3><label class="english">Asset Pipeline</label></h3>
+    </hgroup>
+    <article>
+      <p>Fornece um arcabouço para concatenar e minificar/comprimir arquivos JavaScript e CSS que estão nos diretórios <b>app/assets/javascripts</b> e <b>app/assets/stylesheets</b>.
+      No Rails esse arcabouço é o <a href="https://github.com/rails/sprockets-rails">Sprockets</a>.</p>
+<pre class="prettyprint" data-lang="javascript">
+<b>//= require jquery
+//= require jquery_ujs
+//= require turbolinks
+//= require_tree .</b>
+</pre>
+<pre class="prettyprint" data-lang="css">
+<b>*= require_tree .
+*= require_self</b>
+</pre>
+<pre class="prettyprint" data-lang="html">
+<b>= javascript_include_tag 'application', 'data-turbolinks-track' => true
+= stylesheet_link_tag 'application', 'media' => 'all', 'data-turbolinks-track' => true</b>
+</pre>
+    </article>
+    
+    <aside class="note">
+      <section>
+        <ul>
+          <li>Aqui devemos mostrar a nossa aplicação rodando no <a href="https://edx-ruby-rails-rodrigoadfaria-1.c9users.io">c9</a> e o efeito final do asset pipeline em ação</li>
+        </ul>
+      </section>
+    </aside>  
   </slide>
   
-
+  
   <slide>
     <aside class="note">
       <section>
