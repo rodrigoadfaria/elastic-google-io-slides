@@ -360,7 +360,89 @@ function helloWorld() {
     </aside>  
   </slide>
   
+
+  <slide>
+    <hgroup>
+      <h2>Funções e Construtores</h2>
+    </hgroup>
+    <article>
+      <p>Vimos que é possível criar um objeto da seguinte forma:</p>
+<pre class="prettyprint" data-lang="javascript">
+<b>
+var movie = {title: 'The Godfather', release_info: {year: 1972, rating: 'PG'}}</b>
+</pre>
+      <p>Também podemos fazê-lo com a palavra reservada <label class="blue3">new</label>:</p>
+<pre class="prettyprint" data-lang="javascript">
+<b>var movie = new Object();
+movie.title = "The Godfather";
+movie.release_info = {year: 1972, rating: 'PG'};</b>
+</pre>
+      <p>Mesmo sendo equivalentes, o primeiro caso executa mais rápido, portanto, opte por ele. Em ambos os casos nós somos limitados a criação de um único objeto.</p>
+      <p>Mas e se fosse necessário criar um tipo de objeto do qual poderíamos ter várias instâncias?</p>
+
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Funções e Construtores</h2>
+    </hgroup>
+    <article>
+      <p>Essa é uma tarefa para uma função construtora de objetos:</p>
+<pre class="prettyprint" data-lang="javascript">
+<b>
+var Movie = function(title, year, rating) {
+  this.title = title;
+  this.year = year;
+  this.rating = rating;
+  this.full_title = function() { // "método de instância"
+    return(this.title + ' (' + this.year + ')');
+  };
+};
+
+pianist = new Movie('The Pianist', 2002, 'R');
+pianist.full_title;
+pianist.full_title();
+
+juno = Movie('Juno', 2007, 'PG-13'); // :(</b>
+</pre>
+
+    <aside class="note">
+      <section>
+        <p>Nesse ponto é importante lembrar que o <b>this</b> é uma referência para o código proprietário dele, ou seja, pode ser um objeto ou uma função, etc.
+        É importante lembrar também que as FCOs são palavras reservadas no espaço de nomes e obviamente não devem ter nomes iguais.</p>
+      </section>
+    </aside>
+    </article>
+  </slide>
   
+
+  <slide>
+    <hgroup>
+      <h2>Funções e Construtores</h2>
+    </hgroup>
+    <article>
+      <p>JavaScript possui construtores de objetos nativos:</p>
+<pre class="prettyprint" data-lang="javascript">
+<b>
+var x1 = new Object();    // A new Object object
+var x2 = new String();    // A new String object
+var x3 = new Number();    // A new Number object
+var x4 = new Boolean()    // A new Boolean object
+var x5 = new Array();     // A new Array object
+var x6 = new RegExp();    // A new RegExp object
+var x7 = new Function();  // A new Function object
+var x8 = new Date();      // A new Date object
+</b>
+</pre>
+      <p>Mas apesar de podermos usá-los, a recomendação é que seja usado da maneira primitiva por ser mais rápido:</p>
+<pre class="prettyprint" data-lang="javascript">
+<b>var x5 = [];   // new array object</b>
+</pre>
+    </article>
+  </slide>
+  
+
   <slide>
     <hgroup>
       <h2>Slide with Image</h2>
