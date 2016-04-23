@@ -445,6 +445,74 @@ var x8 = new Date();      // A new Date object
 
   <slide>
     <hgroup>
+      <h2 class="english">Prototypes</h2>
+    </hgroup>
+    <article>
+      <ul class="build fade">
+        <li>Como vimos, apesar de JavaScript ser uma linguagem orientada à objetos, ela não possui o conceito de classes</li>
+        <li>Em vez disso, a reutilização de comportamento (equivalente à herança) é realizada para expandir objetos existentes que servem como <label class="green3">protótipos</label></li>
+        <li>Este modelo também é conhecido como sem classes, orientado a protótipo, ou programação baseada em exemplares</li>
+        <li>Cada objeto em JavaScript é um exemplar do objeto <label class="red3">Object</label> e, portanto, herda todas as suas propriedades e métodos</li>
+        <li>A "classe" <label class="red3">Movie</label> que criamos com a função construtora já é um protótipo</li>
+      </ul>
+    </article>
+  </slide>
+  
+
+  <slide>
+    <hgroup>
+      <h2 class="english">Prototypes</h2>
+    </hgroup>
+    <article>
+      <p>Podemos adicionar uma nova propriedade ao objeto:</p>
+<pre class="prettyprint" data-lang="javascript">
+<b>
+pianist.language = "English";</b>
+</pre>
+      <p>Como também novos métodos:</p>
+<pre class="prettyprint" data-lang="javascript">
+<b>
+pianist.getYear = function () {
+    return this.year;
+};
+
+pianist.concatenate = function () {
+    return this.title +', '+ this.year +', '+ this.rating;
+};
+</b>
+</pre>
+    </article>
+  </slide>
+  
+
+  <slide>
+    <hgroup>
+      <h2 class="english">Prototypes</h2>
+    </hgroup>
+    <article>
+      <p>Se quisermos adicionar um novo método ou propriedade para todos os objetos que extendem o protótipo, utilizamos a palavra reservada <label class="english">protoype</label></p>
+<pre class="prettyprint" data-lang="javascript">
+<b>
+Movie.prototype.language = "English";</b>
+</pre>
+      <p>Como também novos métodos:</p>
+<pre class="prettyprint" data-lang="javascript">
+<b>
+Movie.prototype.getYear = function () {
+    return this.year;
+};
+
+Movie.prototype.concatenate = function () {
+    return this.title +', '+ this.year +', '+ this.rating;
+};
+</b>
+</pre>
+    </article>
+  </slide>
+  
+  
+  <slide>
+    <hgroup>
       <h2>Slide with Image</h2>
     </hgroup>
     <article>
