@@ -1488,3 +1488,7 @@ aside.gdbar img {
 .english {
   font-style: italic;
 }
+
+#remove-block {
+  display: none;
+}

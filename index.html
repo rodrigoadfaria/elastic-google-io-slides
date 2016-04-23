@@ -604,17 +604,21 @@ function changeUlAppearence() {
       <ul id="ul-mutable-jquery" class="build">
         <li>Parece uma tarefa um tanto quanto trabalhosa, não?</li>
         <li>Além disso, corremos o risco de ter problemas de compatibilidade entre as diferentes implementações do JavaScript API (JSAPI) feitas pelos navegadores</li>
+<pre class="prettyprint" data-lang="javascript">
+<b>if(Firefox || Chrome)
+    return document.getElementById(id);
+else if(Internet Explorer)
+    return document.all[id];</b>
+</pre>       
         <li>É aí que apresentamos mais uma ferramenta poderosa: <b>jQuery</b>  <button id="change-ul-jquery">Click me!</button></li>
 <pre class="prettyprint" data-lang="javascript">
-<b>
-function init() {
-    ...
+<b>function init() {
     $('#change-ul-jquery').on('click', changeUlAppearenceWithjQuery);
-};
+}
 
 function changeUlAppearenceWithjQuery() {
     $('#ul-mutable-jquery').toggleClass('english');
-};</b>
+}</b>
 </pre>        
       </ul>
     </article>
@@ -656,6 +660,43 @@ $('#btn-this').on('click', function() {
     $(this).parent().toggleClass('red');
 });</b>
 </pre>        
+      </ul>
+    </article>
+  </slide>
+  
+
+  <slide>
+    <hgroup>
+      <h2>jQuery</h2>
+    </hgroup>
+    <article>
+      <ul class="build">
+        <li>Também podemos implementar outras ações <button id="btn-remove-block">Show code</button>
+<pre id="remove-block" class="prettyprint" data-lang="javascript">
+<b>$('#btn-remove-block').on('click', function() {
+    var block = $('#remove-block');
+    if (block.is(':hidden')) {
+        block.show();
+        $(this).text('Hide code');
+    } else {
+        block.hide();
+        $(this).text('Show code');
+    }
+});</b>
+</pre>  </li>
+        <li>Ou animações <button id="btn-anim-block">Slide up</button>
+<pre id="anim-block" class="prettyprint" data-lang="javascript">
+<b>$('#btn-anim-block').on('click', function() {
+    var block = $('#anim-block');
+    if (block.is(':hidden')) {
+        block.slideDown();
+        $(this).text('Slide up');
+    } else {
+        block.slideUp();
+        $(this).text('Slide down');
+    }
+});</b>
+</pre>   </li>      
       </ul>
     </article>
   </slide>
