@@ -510,29 +510,86 @@ Movie.prototype.concatenate = function () {
     </article>
   </slide>
   
-  
-  <slide>
-    <hgroup>
-      <h2>Slide with Image</h2>
-    </hgroup>
-    <article>
-      <img src="images/chart.png" class="reflect" alt="Description" title="Description">
-      <footer class="source">source: place source info here</footer>
+
+  <slide class="segue dark quote nobackground">
+    <aside class="gdbar right bottom"><img src="images/code_programming_js_128.png"></aside>
+    <article class="flexbox vleft auto-fadein smaller">
+      <q>
+        O <label class="english">Document Object Model</label> (DOM) é uma interface independente de plataforma e linguagem que permitirá que programas e scripts 
+        acessem e atualizem o conteúdo, estrutura e estilo de documentos de forma dinâmica. O documento pode ser adicionalmente 
+        processado e os resultados de processamento podem ser incorporados de volta para a página apresentada.
+      </q>
+      <div class="author">
+        Especificação do <label class="english">Document Object Model</label> (DOM) pelo W3C
+      </div>
     </article>
   </slide>
   
 
   <slide>
     <hgroup>
-      <h2>Slide with Image (Centered horz/vert)</h2>
+      <h2><label class="english">Document Object Model</label> (DOM)</h2>
     </hgroup>
     <article class="flexbox vcenter">
-      <img src="images/barchart.png" alt="Description" title="Description">
-      <footer class="source">source: place source info here</footer>
+      <img src="images/html-dom-example.gif" class="reflect" alt="DOM" title="DOM">
+      <footer class="source">source: http://uvu.miketheindian.com/2011/08/22/html-dom/</footer>
+    </article>
+  </slide>
+
+
+  <slide>
+    <hgroup>
+      <h2><label class="english">Document Object Model</label> (DOM)</h2>
+    </hgroup>
+    <article>
+      <ul class="build fade">
+        <li>O DOM é uma representação padrão de um documento HTML, XML ou XHTML, que consiste de uma hierarquia de elementos</li>
+        <li>Todos os nós em uma página herdam do elemento <label class="blue3">&lt;html&gt;</label></li>
+        <li>Os elementos têm propriedades específicas tais como <label class="blue3">src, id, name, class</label>, etc</li>
+        <li>Todas as variáveis de escopo global pertencem ao objeto global <label class="red3">window</label></li>
+<pre class="prettyprint" data-lang="javascript">
+<b>
+function myFavoriteMovie() {
+    favoriteMovie = "The Godfather";
+};
+
+myFavoriteMovie();
+
+"I can display " + window.favoriteMovie;
+</b>
+</pre>        
+      </ul>
     </article>
   </slide>
   
 
+  <slide>
+    <hgroup>
+      <h2><label class="english">Document Object Model</label> (DOM)</h2>
+    </hgroup>
+    <article>
+      <ul id="ul-mutable" class="build">
+        <li>O objeto global <label class="red3">window</label> não compartilha nenhum dado com outras páginas visíveis</li>
+        <li>Uma de suas propriedades é o <label class="red3">window.document</label> - é o elemento raiz da árvore do documento corrente</li>
+        <li>O <label class="red3">window.document</label> define alguns métodos para a travessia, consulta e alteração dos elementos da árvore,
+        como o <b>document.getElementById</b> <button id="change-ul">Click me!</button></li>
+<pre class="prettyprint" data-lang="javascript">
+<b>function changeUlAppearence() {
+    var mutableUl = document.getElementById('ul-mutable');
+    if (mutableUl) {
+        if (mutableUl.className.match(/english/)) {
+            mutableUl.className = mutableUl.className.replace('english', '');
+        } else {
+            mutableUl.className = mutableUl.className.trim().concat(' english');
+        }
+    }
+};</b>
+</pre>        
+      </ul>
+    </article>
+  </slide>
+  
+  
   <slide>
     <hgroup>
       <h2>Slide Styles</h2>
