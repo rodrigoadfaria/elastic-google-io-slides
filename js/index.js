@@ -10,9 +10,14 @@ function init() {
     }
     
     var btnChangeUl = document.getElementById('change-ul');
-    if (btnChangeUl) {
+    if (btnChangeUl)
         btnChangeUl.addEventListener('click', changeUlAppearence);
-    }    
+    
+    $('#change-ul-jquery').on('click', changeUlAppearenceWithjQuery);
+    
+    $('#btn-this').on('click', function() {
+        $(this).parent().toggleClass('red');
+    });    
 };
 
 function helloWorld() {
@@ -22,10 +27,13 @@ function helloWorld() {
 function changeUlAppearence() {
     var mutableUl = document.getElementById('ul-mutable');
     if (mutableUl) {
-        if (mutableUl.className.match(/english/)) {
+        if (mutableUl.className.match(/english/))
             mutableUl.className = mutableUl.className.replace('english', '');
-        } else {
+        else
             mutableUl.className = mutableUl.className.trim().concat(' english');
-        }
     }
+};
+
+function changeUlAppearenceWithjQuery() {
+    $('#ul-mutable-jquery').toggleClass('english');
 };

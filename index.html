@@ -21,6 +21,7 @@ URL: https://code.google.com/p/io-2012-slides
   <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
   <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
   <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+  <script type='text/javascript' src='js/jquery-2.2.3.js'></script>
   <script type='text/javascript' src='./js/index.js'></script>
 </head>
 <body style="opacity: 0">
@@ -569,19 +570,24 @@ myFavoriteMovie();
     </hgroup>
     <article>
       <ul id="ul-mutable" class="build">
-        <li>O objeto global <label class="red3">window</label> não compartilha nenhum dado com outras páginas visíveis</li>
-        <li>Uma de suas propriedades é o <label class="red3">window.document</label> - é o elemento raiz da árvore do documento corrente</li>
+        <li>O objeto global <label class="red3">window</label> não compartilha nenhum dado com outras páginas</li>
         <li>O <label class="red3">window.document</label> define alguns métodos para a travessia, consulta e alteração dos elementos da árvore,
         como o <b>document.getElementById</b> <button id="change-ul">Click me!</button></li>
 <pre class="prettyprint" data-lang="javascript">
-<b>function changeUlAppearence() {
+<b>function init() {
+    ...
+    var btnChangeUl = document.getElementById('change-ul');
+    if (btnChangeUl)
+        btnChangeUl.addEventListener('click', changeUlAppearence);
+};
+
+function changeUlAppearence() {
     var mutableUl = document.getElementById('ul-mutable');
     if (mutableUl) {
-        if (mutableUl.className.match(/english/)) {
+        if (mutableUl.className.match(/english/))
             mutableUl.className = mutableUl.className.replace('english', '');
-        } else {
+        else
             mutableUl.className = mutableUl.className.trim().concat(' english');
-        }
     }
 };</b>
 </pre>        
@@ -589,40 +595,72 @@ myFavoriteMovie();
     </article>
   </slide>
   
-  
+
   <slide>
     <hgroup>
-      <h2>Slide Styles</h2>
+      <h2>jQuery</h2>
     </hgroup>
-    <article class="smaller">
-      <div class="columns-2">
-        <ul>
-          <li class="red">class="red"</li>
-          <li class="red2">class="red2"</li>
-          <li class="red3">class="red3"</li>
-          <li class="blue">class="blue"</li>
-          <li class="blue2">class="blue2"</li>
-          <li class="blue3">class="blue3"</li>
-          <li class="green">class="green"</li>
-          <li class="green2">class="green2"</li>
-        </ul>
-        <ul>
-          <li class="green3">class="green3"</li>
-          <li class="yellow">class="yellow"</li>
-          <li class="yellow2">class="yellow2"</li>
-          <li class="yellow3">class="yellow3"</li>
-          <li class="gray">class="gray"</li>
-          <li class="gray2">class="gray2"</li>
-          <li class="gray3">class="gray3"</li>
-          <li class="gray4">class="gray4"</li>
-        </ul>
-      </div>
-      <div class="centered" style="margin-top:2em">
-        I am centered text with a <button>Button</button> and <button disabled>Disabled</button> button.
+    <article>
+      <ul id="ul-mutable-jquery" class="build">
+        <li>Parece uma tarefa um tanto quanto trabalhosa, não?</li>
+        <li>Além disso, corremos o risco de ter problemas de compatibilidade entre as diferentes implementações do JavaScript API (JSAPI) feitas pelos navegadores</li>
+        <li>É aí que apresentamos mais uma ferramenta poderosa: <b>jQuery</b>  <button id="change-ul-jquery">Click me!</button></li>
+<pre class="prettyprint" data-lang="javascript">
+<b>
+function init() {
+    ...
+    $('#change-ul-jquery').on('click', changeUlAppearenceWithjQuery);
+};
+
+function changeUlAppearenceWithjQuery() {
+    $('#ul-mutable-jquery').toggleClass('english');
+};</b>
+</pre>        
+      </ul>
+    </article>
+  </slide>
+  
+  
+  <slide class="segue dark quote nobackground">
+    <aside class="gdbar right bottom"><img src="images/code_programming_js_128.png"></aside>
+    <article class="flexbox vleft auto-fadein smaller">
+      <q>
+        jQuery é uma biblioteca JavaScript rápida, compacta e cheia de funcionalidades. Ela torna coisas como travessia de HTML, manipulação, tratamento de eventos, animação e AJAX
+        muito mais simples por meio de uma API fácil de usar que funciona em vários navegadores de diferentes versões.
+        Versátil e extensível, jQuery mudou a forma como milhões de pessoas escrevem JavaScript.
+      </q>
+      <div class="author">
+        <label class="english">jQuery Foundation</label>
       </div>
     </article>
   </slide>
-
+  
+  
+  <slide>
+    <hgroup>
+      <h2>jQuery</h2>
+    </hgroup>
+    <article>
+      <ul id="ul-mutable-jquery" class="build">
+        <li>Lançada em dezembro de 2006 no BarCamp de Nova York por John Resig, tornou-se a biblioteca JavaScript mais popular do mundo</li>
+        <li>Um levantamento da <a href="http://www.w3cook.com/javascript/jquery">w3cook</a> mostra que jQuery tem 94,63% de participação de mercado</li>
+        <li>As funcionalidades são acessadas pela variável global <b>jQuery()</b> ou seu codinome <b>$()</b></li>
+        <li>Os elementos são manipulados por meio de <label class="blue3">seletores</label> como <b>$(<label class="green3">'#change-ul-jquery'</label>)</b>,
+        <b>$(<label class="green3">'ul.build'</label>)</b>, <b>$(<label class="green3">'#ul-mutable-jquery > li'</label>)</b>
+        </li>
+        <li><b>$()</b> retorna um ou mais elementos do DOM que casaram com o seletor. Caso contrário, um objeto "empacotador" jQuery é retornado</li>
+        <li><b>$(<label class="blue3">this</label>)</b> é uma referência para o elemento que disparou o evento <button id="btn-this">this</button></li>
+<pre class="prettyprint" data-lang="javascript">
+<b>
+$('#btn-this').on('click', function() {
+    $(this).parent().toggleClass('red');
+});</b>
+</pre>        
+      </ul>
+    </article>
+  </slide>
+  
+  
   <slide class="segue dark nobackground">
     <aside class="gdbar"><img src="images/code_programming_js_128.png"></aside>
     <hgroup class="auto-fadein">
