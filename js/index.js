@@ -1,7 +1,10 @@
 
-window.onload = function initialize() {
+
+$(document).ready(init);
+
+/*window.onload = function initialize() {
 	init();
-};
+};*/
 
 function init() {
     var label = document.getElementById('discrete');
@@ -41,25 +44,28 @@ function changeUlAppearenceWithjQuery() {
 };
 
 function setupjQueryEvents() {
-    $('#btn-remove-block').on('click', function() {
-        var block = $('#remove-block');
-        if (block.is(':hidden')) {
-            block.show();
-            $(this).text('Hide code');
-        } else {
-            block.hide();
-            $(this).text('Show code');
-        }
-    });
-    
-    $('#btn-anim-block').on('click', function() {
-        var block = $('#anim-block');
-        if (block.is(':hidden')) {
-            block.slideDown();
-            $(this).text('Slide up');
-        } else {
-            block.slideUp();
-            $(this).text('Slide down');
-        }
-    });
+    $('#btn-remove-block').on('click', changeCodeVisibility);
+    $('#btn-anim-block').on('click', slideCode);
+};
+
+function changeCodeVisibility() {
+    var block = $('#remove-block');
+    if (block.is(':hidden')) {
+        block.show();
+        $(this).text('Hide code');
+    } else {
+        block.hide();
+        $(this).text('Show code');
+    }
+};
+
+function slideCode() {
+    var block = $('#anim-block');
+    if (block.is(':hidden')) {
+        block.slideDown();
+        $(this).text('Slide up');
+    } else {
+        block.slideUp();
+        $(this).text('Slide down');
+    }
 };

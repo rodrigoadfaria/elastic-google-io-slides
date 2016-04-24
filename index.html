@@ -701,6 +701,59 @@ $('#btn-this').on('click', function() {
     </article>
   </slide>
   
+
+  <slide>
+    <hgroup>
+      <h2>Eventos e <label class="english">callbacks</label></h2>
+    </hgroup>
+    <article>
+      <ul id="ul-group-jquery" class="build fade">
+        <li>Como já vimos, é possível definir ou alterar como os elementos HTML reagem às ações do usuário</li>
+        <li>Isso é feito quando "anexamos" tratadores de eventos (<label class="english">callbacks</label>) em elementos específicos</li>
+        <li>O jQuery permite a manipulação tanto de eventos "físicos" de usuários, como cliques do <label class="english">mouse</label>, quanto de pseudo eventos "lógicos" como a submissão de um formulário</li>
+        <li>Vale lembrar que as transformações são aplicadas a um ou um grupo de elementos retornado por um seletor</li>
+        <li>Com o objetivo de deixar o código conciso (DRY) e fazer uso da degradação graciosa, devemos associar os tratadores de eventos em uma função de <label class="english">setup</label></li>
+      </ul>
+      
+    <aside class="note">
+      <section>
+        <p>Se houver tempo, testar os múltiplos eventos.</p>
+      </section>
+    </aside>      
+    </article>
+  </slide>
+  
+
+  <slide>
+    <hgroup>
+      <h2>Eventos e <label class="english">callbacks</label></h2>
+    </hgroup>
+    <article>
+<pre class="prettyprint" data-lang="javascript">
+<b>
+$(document).ready(init);
+
+function init() {
+    setupjQueryEvents();    
+};
+
+function setupjQueryEvents() {
+    $('#btn-remove-block').on('click', changeCodeVisibility);
+    $('#btn-anim-block').on('click', slideCode);
+};
+
+function changeCodeVisibility() {
+    ...
+};
+
+function slideCode() {
+    ...
+};
+</b>
+</pre>     
+    </article>
+  </slide>
+  
   
   <slide class="segue dark nobackground">
     <aside class="gdbar"><img src="images/code_programming_js_128.png"></aside>
