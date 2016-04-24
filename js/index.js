@@ -109,7 +109,7 @@ function closeModal() {
 
 function getMovieToJSON() {
     $.ajax({
-        url: "https://edx-ruby-rails-rodrigoadfaria-1.c9users.io/movies/3/to_json",
+        url: "https://blueberry-custard-87466.herokuapp.com/movies/3/to_json",
         crossDomain: true,
         success: successMovieJSON,
         error: function(xhr, status, error) {
