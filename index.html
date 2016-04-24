@@ -758,27 +758,95 @@ function slideCode() {
   <slide class="segue dark nobackground">
     <aside class="gdbar"><img src="images/code_programming_js_128.png"></aside>
     <hgroup class="auto-fadein">
-      <h2>Segue Slide</h2>
-      <h3>Subtitle Placeholder</h3>
+      <h2>AJAX</h2>
+      <h3>Rodolfo Scotolo</h3>
     </hgroup>
   </slide>
 
-  <slide class="fill nobackground" style="background-image: url(images/sky.jpg)">
-    <hgroup>
-      <h2 class="white">Full Image (with Optional Header)</h2>
-    </hgroup>
-    <footer class="source white">www.flickr.com/photos/25797459@N06/5438799763/</footer>
-  </slide>
 
   <slide>
     <hgroup>
-      <h2>Slide with Iframe</h2>
+      <h2>AJAX</h2>
     </hgroup>
     <article>
-      <iframe data-src="http://www.google.com/doodle4google/resources/history.html"></iframe>
+      <ul class="build fade">
+        <li>Acrônimo para <label class="english">Asynchronous JavaScript XML</label>, o AJAX foi criado em 1998 pela Microsoft no IE 5</li>
+        <li>Um novo objeto, <b>XmlHttpRequest</b> ou <b>XHR</b>, foi adicionado ao objeto global do JavaScript</li>
+        <li>De lá para cá, tornou-se possível enviar requisições HTTP ao servidor sem a necessidade de recarregar a página e, consequentemente, alterar o DOM com o resultado</li>
+        <li>Como JavaScript é <label class=""><b>single-threaded</b></label>, a interface do navegador seria congelada até que o servidor retornasse à requisição</li>
+        <li>Logo, o <b>XHR</b> substitui o retorno imediato por <label class="english">callbacks</label> que tratam o retorno do servidor</li>
+        <li>Quando a resposta chega ao navegador, seu conteúdo é enviado como parâmetro ao <label class="english">callback</label> que pode ter obtido sucesso ou um erro pode ter ocorrido</li>
+        <li>Como as funções JavaScript são fechamentos, o método de <label class="english">callback</label> tem acesso a todas as variáveis visíveis quando a chamada XHR foi feita</li>
+      </ul>
+      
+    <aside class="note">
+      <section>
+        <p></p>
+      </section>
+    </aside>      
     </article>
   </slide>
+  
 
+  <slide>
+    <hgroup>
+      <h2>AJAX</h2>
+    </hgroup>
+    <article>
+        <p>Vamos buscar os detalhes de um filme no rotten-potatoes com Ajax <button id="btn-ajax">Ajax movie</button></p>
+        <div id="ajax-modal" class="modal">
+          <div class="modal-container"><a href="#" title="Close" class="close-modal">x</a></div>
+        </div>
+<pre class="prettyprint" data-lang="javascript">
+<b>function setupjQueryEvents() {
+    ...
+     $("#btn-ajax").on('click', getMovieInfoByAjax);
+};
+
+function getMovieInfoByAjax() {
+    $.ajax({
+        url: "https://blueberry-custard-87466.herokuapp.com/movies/2",
+        crossDomain: true,
+        success: successMovieInfo,
+        error: function(xhr, status, error) {
+            console.log("Error "+ error);
+            console.log("Status "+ status);
+        }
+    });
+};</b>
+</pre>
+    </article>
+  </slide>
+  
+
+  <slide>
+    <hgroup>
+      <h2>AJAX</h2>
+    </hgroup>
+    <article>
+<pre class="prettyprint" data-lang="javascript">
+<b>function successMovieInfo(result) {
+    $('.modal-content').remove();
+    
+    var div = $('&lt;div class="modal-content"&gt;');
+    div.html(result);
+    var content = div.find('#main');
+    div.html(content.find('h2'));
+    div.append(content.find('#details'));
+    
+    $(div).appendTo('.modal-container');
+    $('.modal').show();
+    
+    setTimeout(function() {// workaround to close the dialog
+        $('.modal').fadeOut();
+    }, 3000);
+};
+</b>
+</pre>
+    </article>
+  </slide>
+  
+    
   <slide class="thank-you-slide segue nobackground">
     <aside class="gdbar right"><img src="images/code_programming_js_128.png"></aside>
     <article class="flexbox vleft auto-fadein">

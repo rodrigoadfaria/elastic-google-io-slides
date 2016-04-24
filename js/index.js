@@ -46,6 +46,8 @@ function changeUlAppearenceWithjQuery() {
 function setupjQueryEvents() {
     $('#btn-remove-block').on('click', changeCodeVisibility);
     $('#btn-anim-block').on('click', slideCode);
+    $("#btn-ajax").on('click', getMovieInfoByAjax);
+    $('.close-modal').on('click', closeModal);
 };
 
 function changeCodeVisibility() {
@@ -68,4 +70,38 @@ function slideCode() {
         block.slideUp();
         $(this).text('Slide down');
     }
+};
+
+function getMovieInfoByAjax() {
+    $.ajax({
+        url: "https://blueberry-custard-87466.herokuapp.com/movies/2",
+        crossDomain: true,
+        success: successMovieInfo,
+        error: function(xhr, status, error) {
+            console.log("Error "+ error);
+            console.log("Status "+ status);
+        }
+    });
+};
+
+function successMovieInfo(result) {
+    $('.modal-content').remove();
+    
+    var div = $('<div class="modal-content">');
+    div.html(result);
+    var content = div.find('#main');
+    div.html(content.find('h2'));
+    div.append(content.find('#details'));
+    
+    $(div).appendTo('.modal-container');
+    $('.modal').show();
+    
+    setTimeout(function() {// workaround to close the dialog
+        $('.modal').fadeOut();
+    }, 3000);
+};
+
+function closeModal() {
+    console.log('passou no close');
+    $(this).parent().parent().hide();
 };

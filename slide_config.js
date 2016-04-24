@@ -30,7 +30,7 @@ var SLIDE_CONFIG = {
   },
   {
     name: 'Rodolfo Scotolo',
-    company: 'Job Title, Google',
+    company: 'Developer, IME-USP',
     gplus: 'http://plus.google.com/1234567890',
     twitter: '@yourhandle',
     www: 'http://www.you.com',
