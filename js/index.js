@@ -48,6 +48,7 @@ function setupjQueryEvents() {
     $('#btn-anim-block').on('click', slideCode);
     $("#btn-ajax").on('click', getMovieInfoByAjax);
     $('.close-modal').on('click', closeModal);
+    $("#btn-ajax-json").on('click', getMovieToJSON);
 };
 
 function changeCodeVisibility() {
@@ -104,4 +105,28 @@ function successMovieInfo(result) {
 function closeModal() {
     console.log('passou no close');
     $(this).parent().parent().hide();
+};
+
+function getMovieToJSON() {
+    $.ajax({
+        url: "https://edx-ruby-rails-rodrigoadfaria-1.c9users.io/movies/3/to_json",
+        crossDomain: true,
+        success: successMovieJSON,
+        error: function(xhr, status, error) {
+            console.log("Error "+ error);
+        }
+    });    
+};
+
+function successMovieJSON(json) {
+    var content = JSON.stringify(json);
+    var properties = content.replaceAll('":', '" : ').split(',');
+    $('#json-home').html('');
+    for (p in properties)
+        $('#json-home').append(properties[p]).append(', \n');
+};
+
+String.prototype.replaceAll = function(pattern, replacement) {
+    var target = this;
+    return target.replace(new RegExp(pattern, 'g'), replacement);
 };

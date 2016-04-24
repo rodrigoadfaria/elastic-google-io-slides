@@ -62,7 +62,6 @@ URL: https://code.google.com/p/io-2012-slides
         <li>AJAX: <label class="english">Asynchronous</label> JavaScript e XML</li>
         <li>Testando JavaScript e AJAX</li>
         <li>Aplicativos de uma única página e JSON APIs</li>
-        <li><label class="english">Tips & Tricks</label></li>
         <li>Considerações finais: passado, presente e futuro do JavaScript</li>
       </ul>
     </article>
@@ -206,7 +205,7 @@ function helloWorld() {
       <ul class="build fade">
         <li>Quase tudo é um objeto. O objeto JavaScript básico é similar ao <label class="english">hash</label> em Ruby, exceto pelo fato de que as chaves devem ser <b>strings</b></li>
         <li>As variáveis não possuem tipos, mas os objetos aos quais elas se referem possuem</li>
-        <li>Classes e tipos importam ainda menos do quem em Ruby. Aliás, classes sequer existem</li>
+        <li>Classes e tipos importam ainda menos do que em Ruby. Aliás, classes sequer existem</li>
         <li>Funções são fechamentos (<label class="english">closures</label>), que são computados em tempo e local diferentes de onde foram definidas</li>
         <li>O JavaScript é interpretado e inclui mecanismos de metaprogramação e introspecção</li>
     </article>
@@ -491,7 +490,7 @@ pianist.concatenate = function () {
       <h2 class="english">Prototypes</h2>
     </hgroup>
     <article>
-      <p>Se quisermos adicionar um novo método ou propriedade para todos os objetos que extendem o protótipo, utilizamos a palavra reservada <label class="english">protoype</label></p>
+      <p>Se quisermos adicionar um novo método ou propriedade para todos os objetos que extendem o protótipo, utilizamos a palavra reservada <label class="english">prototype</label></p>
 <pre class="prettyprint" data-lang="javascript">
 <b>
 Movie.prototype.language = "English";</b>
@@ -845,8 +844,63 @@ function getMovieInfoByAjax() {
 </pre>
     </article>
   </slide>
+
+
+  <slide>
+    <hgroup>
+      <h2>Aplicativos de uma única página e JSON APIs</h2>
+    </hgroup>
+    <article>
+      <ul class="build fade">
+        <li>Aplicação de uma única página (SPA) é aquela onde não há necessidade de recarregar a página ao se efetuar novas requisições</li>
+        <li>Um destes bem conhecido é o Google Maps, um dos primeiros aplicativos dessa categoria</li>
+        <li>Para atualizar os dados da página, requisições via AJAX são enviadas ao servidor e o resultado tratado pelo JavaScript</li>
+        <li>Podemos renderizar <label class="english">partial</label> (em Rails) ou <b>render :text</b> para devolver um <b>string</b> simples</li>
+        <li>Outro mecanismo que podemos utilizar é o XML que possui muitas peculiaridades e tornam <label class="english">parsers</label> complexos de serem escritos</li>
+        <li>Uma alternativa bastante atraente é o <label class="english">JavaScript Object Notation</label> (JSON), bem mais simples que XML, porém, suficiente para representar muitas estruturas de dados</li>
+      </ul>
+      
+    <aside class="note">
+      <section>
+        <p>Digamos um arquivo edit.html.erb, o partial é <%= render partial: "form", locals: {zone: @zone} %> <br/>
+        _form.html.erb Note o underscore, é o que indica o partial</p>
+      </section>
+    </aside>      
+    </article>
+  </slide>
   
-    
+
+  <slide>
+    <hgroup>
+      <h2>Aplicativos de uma única página e JSON APIs</h2>
+    </hgroup>
+    <article>
+        <p>Vamos requisitar um filme com Ajax retornando JSON <button id="btn-ajax-json">JSON movie</button></p>
+        <div id="ajax-modal" class="modal">
+          <div class="modal-container"><a href="#" title="Close" class="close-modal">x</a></div>
+        </div>
+<pre id="json-home" class="prettyprint" data-lang="javascript">
+<b>function getMovieToJSON() {
+    $.ajax({
+        url: "https://edx-ruby-rails-rodrigoadfaria-1.c9users.io/movies/3/to_json",
+        crossDomain: true,
+        success: successMovieJSON,
+        error: function(xhr, status, error) {console.log("Error "+ error);}
+    });    
+};
+
+function successMovieJSON(json) {
+    var content = JSON.stringify(json);
+    var properties = content.replaceAll('":', '" : ').split(',');
+    $('#json-home').html('');
+    for (p in properties)
+        $('#json-home').append(properties[p]).append(', \n');
+};</b>
+</pre>
+    </article>
+  </slide>
+  
+  
   <slide class="thank-you-slide segue nobackground">
     <aside class="gdbar right"><img src="images/code_programming_js_128.png"></aside>
     <article class="flexbox vleft auto-fadein">
