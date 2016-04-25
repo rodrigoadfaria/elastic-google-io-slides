@@ -30,11 +30,11 @@ var SLIDE_CONFIG = {
   },
   {
     name: 'Rodolfo Scotolo',
-    company: 'Developer, IME-USP',
+    company: 'Empreendedor, Oportuno.co',
     gplus: 'http://plus.google.com/1234567890',
-    twitter: '@yourhandle',
-    www: 'http://www.you.com',
-    github: 'http://github.com/you'
+    twitter: '@rodolfoscotolo',
+    www: 'http://oportuno.co',
+    github: 'http://github.com/nerd901'
   }]
 };
 
