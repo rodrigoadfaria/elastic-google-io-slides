@@ -26,7 +26,7 @@ function init() {
 
 function helloWorld() {
     alert('Mantenha o JavaScript discreto :)');
-    
+    return("Oi");
     
 };
 
@@ -132,10 +132,10 @@ String.prototype.replaceAll = function(pattern, replacement) {
     return target.replace(new RegExp(pattern, 'g'), replacement);
 };
 
+
 function valueSubtitle(){
     //$(document).ready(init);
-        var subtitle = $('#subtitle').val();
+        var subtitle = document.getElementById("subtitle");
         alert(subtitle);
-    }
-
-
+    
+}

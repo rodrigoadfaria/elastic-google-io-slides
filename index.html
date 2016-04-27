@@ -22,7 +22,8 @@ URL: https://code.google.com/p/io-2012-slides
   <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
   <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
   <script type='text/javascript' src='js/jquery-2.2.3.js'></script>
-  <script type='text/javascript' src='./js/index.js'></script>
+  <script type='text/javascript' src='js/index.js'></script>
+
 </head>
 <body style="opacity: 0">
 
@@ -148,7 +149,7 @@ URL: https://code.google.com/p/io-2012-slides
       <h2>JavaScript: Visão Geral</h2>
     </hgroup>
     <article>
-      <p>Como boa prática, é importante lembrar da <b>degradação graciosa</b> que define uma experiência de usuário de um site satisfatória mesmo quando não há suporte a JavaScript.</p>
+      <p>Como boa prática, é importante lembrar a <b>degradação graciosa</b> que define uma experiência de usuário de um site satisfatória mesmo quando não há suporte a JavaScript.</p>
       <p>Além disso, o código JavaScript deve ser <b>discreto</b>, ou seja, deve ser mantido completamente fora das páginas <label id="discrete" class="blue2">HTML</label>.
 <pre class="prettyprint" data-lang="html">
 &lt;head&gt;
@@ -253,7 +254,7 @@ function helloWorld() {
         </tr>
         <tr>
           <td>Strings & RegExp</td><td>Têm funcionamento bem parecido com Ruby. Uma string pode ter a forma <b>"string", 'is also a string', "join string a "+"with b"</b><br/>
-          As trings em JavaScript respondem a funções como <br/><b>var str = "mad, mad world"<br/> str.split(' ')<br/> str.slice(3, 8)<br/> str.slice(-3)<br/> str.indexOf('l')<br/> str.charAt(3)<br/></b><br/>
+          As Strings em JavaScript respondem a funções como <br/><b>var str = "mad, mad world"<br/> str.split(' ')<br/> str.slice(3, 8)<br/> str.slice(-3)<br/> str.indexOf('l')<br/> str.charAt(3)<br/></b><br/>
           Já as expressões regulares são usadas para encontrar padrões e/ou buscar e substituir strings em textos.<br/>
           A sintaxe de uma RegExp em JavaScript é da forma <label class="english">/padrão/modificadores</label><br/>
           <b>var pattern = /GoD/i; var title = 'The godfather is the best movie! Oh my GOD :O'</b><br/>
@@ -280,7 +281,7 @@ function helloWorld() {
         </tr>      
         <tr>
           <td>Conversões</td><td>Existem funções da linguagem que podem ser utilizadas para conversões de tipo, tais como, <b>'string' + 15, parseInt('2016'), parseInt('four'), parseFloat('24.4567')</b><br/>
-          Há a possibilidade de indicar a base quando da conversão - <b>parseInt('0101', 2)</b>.
+          Há a possibilidade de indicar a base da conversão - <b>parseInt('0101', 2)</b>.
           </td>
         </tr>
         <tr>
@@ -917,7 +918,7 @@ function successMovieJSON(json) {
   <slide>
     <hgroup>
       <h2>Testando Javascript e Ajax</h2>
-      <h3>Javascript</h3>
+      <h3 id="subtitle">Javascript</h3>
     </hgroup>
     <article>
       <pre class="prettyprint" data-lang="javascript">
@@ -938,7 +939,7 @@ describe("Included matchers:", function() {
   <slide>
     <hgroup>
       <h2>Testando Javascript e Ajax</h2>
-      <h3>Ajax</h3>
+      <h3 id="subtitle">Ajax</h3>
     </hgroup>
     <article>
       <pre class="prettyprint" data-lang="javascript">
@@ -969,9 +970,9 @@ it("should make an Ajax request to the correct URL", function() {
         <li>Muita gente gastou energia para colocar no JavaScript nessa posição privilegiada de linguagem web do lado do cliente</li>
         <li>Como a maioria dos <label class="english">smartphones</label> e <label class="english">tablets</label> agora podem executar JavaScript, aplicativos portáteis são criados usando HTML, CSS e JavaScript 
         ao invés de versões específicas para cada plataforma. Um arcabouço para esta tarefa é o <b>PhoneGap</b></li>
-        <li>Outros arcaboucços que ajudam a ter UI flexíveis são o <b>jQuery Mobile</b> e <b>Sencha Touch</b></li>
+        <li>Outros arcabouços que ajudam a ter UI flexíveis são o <b>jQuery Mobile</b> e <b>Sencha Touch</b></li>
         <li>A preocupação dos desenvolvedores agora é melhorar o seu <label class="blue3">desempenho</label> com técnicas avançadas de engenharia de linguagem, compilação <label class="english">Just In Time</label> (JIT), etc</li>
-        <li>Além disso, o aumento da <label class="blue3">produtividade</label> é outra necessidade que faz o mercao de software buscar soluções para o JavaScript, dado que sua sintaxe é, dificilmente, concisa e, frequentemente, desajeitada</li>
+        <li>Além disso, o aumento da <label class="blue3">produtividade</label> é outra necessidade que faz o mercado de software buscar soluções para o JavaScript, dado que sua sintaxe é, dificilmente, concisa e, frequentemente, desajeitada</li>
         
       </ul>
       

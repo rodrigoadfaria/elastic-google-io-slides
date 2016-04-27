@@ -30,7 +30,7 @@ var SLIDE_CONFIG = {
   },
   {
     name: 'Rodolfo Scotolo',
-    company: 'Empreendedor, Oportuno.co',
+    company: 'Empreendedor',
     gplus: 'http://plus.google.com/1234567890',
     twitter: '@rodolfoscotolo',
     www: 'http://oportuno.co',
