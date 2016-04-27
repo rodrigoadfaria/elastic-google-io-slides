@@ -849,68 +849,6 @@ function getMovieInfoByAjax() {
   
   <slide>
     <hgroup>
-      <h2>Testando Javascript e Ajax</h2>
-      <h3>Visão geral</h3>
-    </hgroup>
-    <article>
-      <ul class="build fade">
-	<li>Jasmine é um arcabouço de testes que utiliza as práticas de TDD para testar códigos em javascript e que suporta as mesmas práticas de TDD do RSpec, além de mimetizá-las</li>
-    	<li><b>describe</b> é uma função global que inicia-se juntamente com a suíte de testes e recebe dois parâmetros: uma <b>string</b>, o título da suíte de especificação e uma <b>function</b>, o bloco de código que implementa a suíte</li>
-    	<li><b>it</b> é uma função global onde são definidas as especificações (<label class="english">Specs</label>). Assim como o <b>describe</b>, ela recebe dois parâmetros: uma <b>string</b>, título da especificação e uma <b>function</b>, o teste</li>
-    	<li><b>expect</b> é a ação/valor esperado como resposta do teste. Ele recebe o valor atual e vincula-o com uma função <label class="english">Matcher</label> que recebe o valor esperado</li>
-    	<li><label class="english"><b>Matchers</b></label> implementam uma comparação entre o valor atual e o esperado, reportando ao Jasmine se a expectativa foi atendida (<label class="blue3"><b>true</b></label>) ou não (<label class="blue3"><b>false</b></label>)</li>
-      </ul>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Testando Javascript e Ajax</h2>
-      <h3>Javascript</h3>
-    </hgroup>
-    <article>
-<pre class="prettyprint" data-lang="javascript">
-<b>describe("Included matchers:", function() {
-
-  it("The 'toBe' matcher compares with ===", function() {
-    var a = 12;
-    var b = a;
-
-    expect(a).toBe(b);
-    expect(a).not.toBe(null);
-  });
-});
-</b></pre>
-    </article>
-  </slide>
-
-
-  <slide>
-    <hgroup>
-      <h2>Testando Javascript e Ajax</h2>
-      <h3>Ajax</h3>
-    </hgroup>
-    <article>
-<pre class="prettyprint" data-lang="javascript">
-<b>describe("Ajax Tests", function() {
-    var configuration = { 
-      url: "https://blueberry-custard-87466.herokuapp.com/movies/3/to_json",
-        remainingCallTime: 10000 
-    };
-});
-            
-it("should make an Ajax request to the correct URL", function() {
-  spyOn($, "ajax");
-  sendRequest(undefined, configuration);
-  expect($.ajax.mostRecentCall.args[0]["url"]).toEqual(configuration.url);
-});
-</b></pre>
-    </article>
-  </slide>
-
-
-  <slide>
-    <hgroup>
       <h2>Aplicativos de uma única página e JSON APIs</h2>
     </hgroup>
     <article>
@@ -962,7 +900,7 @@ function successMovieJSON(json) {
 </pre>
     </article>
   </slide>
-<<<<<<< HEAD
+
   
   <slide>
     <hgroup>
@@ -970,11 +908,13 @@ function successMovieJSON(json) {
       <h3>Visão geral</h3>
     </hgroup>
     <article>
-    <p>Jasmine é um arcabouço de testes, que utiliza as praticas de TDD, para testar codigos em javascript.O Jasmine da suporte as mesmas praticas de TDD do RSpec além de mimetiza-las.</p>
-    <p><label class="english"><b>Describe</b></label> é uma função global, que inicia-se juntamente com a suíte de teste, essa função recebe dois parâmetros, uma string e uma function.A <label class="english">string</label> é o título da suite de especificaçao,a função é o bloco de código que implementa a suíte.</p>
-    <p><label class="english"><b>It</b></label> é uma função global, onde são definidas as especificações (<label class="english">Specs</label>).Assim com o <label class="english">describe</label> ela recebe dois parâmetros, uma string e uma função.A string é título das especificação e a função o teste.</p>
-    <p><label class="english"><b>Expect</b></label> é o ação/valor esperado como resposta do teste, ele recebe o valor atual e vincula-o com uma função <label class="english">Matcher</label> que recebe o valor esperado.</p>
-    <p><label class="english"><b>Matchers</b></label> implementão uma comparação entre o atual valor e o valor esperado, ele reporta ao Jasmine, se a expectativa atendida (true) ou não (false).</p>
+      <ul class="build fade">
+        <li>Jasmine é um arcabouço de testes que utiliza as práticas de TDD para testar códigos em javascript e que suporta as mesmas práticas de TDD do RSpec, além de mimetizá-las</li>
+        <li><b>describe</b> é uma função global que inicia-se juntamente com a suíte de testes e recebe dois parâmetros: uma <b>string</b>, o título da suíte de especificação e uma <b>function</b>, o bloco de código que implementa a suíte</li>
+        <li><b>it</b> é uma função global onde são definidas as especificações (<label class="english">Specs</label>). Assim como o <b>describe</b>, ela recebe dois parâmetros: uma <b>string</b>, título da especificação e uma <b>function</b>, o teste</li>
+        <li><b>expect</b> é a ação/valor esperado como resposta do teste. Ele recebe o valor atual e vincula-o com uma função <label class="english">Matcher</label> que recebe o valor esperado</li>
+        <li><label class="english"><b>Matchers</b></label> implementam uma comparação entre o valor atual e o esperado, reportando ao Jasmine se a expectativa foi atendida (<label class="blue3"><b>true</b></label>) ou não (<label class="blue3"><b>false</b></label>)</li>
+      </ul>
     </article>
   </slide>
 
@@ -984,7 +924,8 @@ function successMovieJSON(json) {
       <h3 id="subtitle">Javascript</h3>
     </hgroup>
     <article>
-      <pre class="prettyprint" data-lang="javascript">
+<pre class="prettyprint" data-lang="javascript">
+<b>
 describe("Included matchers:", function() {
 
   it("The 'toBe' matcher compares with ===", function() {
@@ -994,7 +935,8 @@ describe("Included matchers:", function() {
     expect(a).toBe(b);
     expect(a).not.toBe(null);
   });
-    </pre>
+</b>
+</pre>
     </article>
   </slide>
 
@@ -1005,9 +947,8 @@ describe("Included matchers:", function() {
       <h3 id="subtitle">Ajax</h3>
     </hgroup>
     <article>
-      <pre class="prettyprint" data-lang="javascript">
-
-  describe("Ajax Tests", function() {
+<pre class="prettyprint" data-lang="javascript">
+<b>describe("Ajax Tests", function() {
     var configuration = { 
       url: "https://blueberry-custard-87466.herokuapp.com/movies/3/to_json",
         remainingCallTime: 10000 
@@ -1019,13 +960,11 @@ it("should make an Ajax request to the correct URL", function() {
   sendRequest(undefined, configuration);
   expect($.ajax.mostRecentCall.args[0]["url"]).toEqual(configuration.url);
 });
-
-    </pre>
+</b>
+</pre>
     </article>
   </slide>
-=======
 
->>>>>>> c62286bbfaac52274001972ed60a5409b7c7f6bf
 
   <slide>
     <hgroup>
