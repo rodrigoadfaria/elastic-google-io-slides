@@ -25,9 +25,7 @@ function init() {
 };
 
 function helloWorld() {
-    alert('Mantenha o JavaScript discreto :)');
-    
-    
+    alert('Mantenha o JavaScript discreto :)');    
 };
 
 function changeUlAppearence() {
@@ -131,11 +129,3 @@ String.prototype.replaceAll = function(pattern, replacement) {
     var target = this;
     return target.replace(new RegExp(pattern, 'g'), replacement);
 };
-
-function valueSubtitle(){
-    //$(document).ready(init);
-        var subtitle = $('#subtitle').val();
-        alert(subtitle);
-    }
-
-
