@@ -55,3 +55,6 @@ describe("The String extension ", function() {
 		expect(str.replaceAll).not.toThrow();
 	});
 });
+
+
+

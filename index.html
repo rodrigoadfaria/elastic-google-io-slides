@@ -921,7 +921,6 @@ function successMovieJSON(json) {
   <slide>
     <hgroup>
       <h2>Testando Javascript e Ajax</h2>
-      <h3 id="subtitle">Javascript</h3>
     </hgroup>
     <article>
 <pre class="prettyprint" data-lang="javascript">
@@ -944,22 +943,23 @@ describe("Included matchers:", function() {
   <slide>
     <hgroup>
       <h2>Testando Javascript e Ajax</h2>
-      <h3 id="subtitle">Ajax</h3>
     </hgroup>
     <article>
 <pre class="prettyprint" data-lang="javascript">
-<b>describe("Ajax Tests", function() {
-    var configuration = { 
-      url: "https://blueberry-custard-87466.herokuapp.com/movies/3/to_json",
-        remainingCallTime: 10000 
-    };
-});
-            
-it("should make an Ajax request to the correct URL", function() {
-  spyOn($, "ajax");
-  sendRequest(undefined, configuration);
-  expect($.ajax.mostRecentCall.args[0]["url"]).toEqual(configuration.url);
-});
+<b>describe("The Movie ", function() {
+    var movie;
+
+    beforeEach(function(){
+      movie = new Movie();
+      movie.info();
+    });
+
+    it("name is Alladin", function(){
+      expect(movie).not.toBe(null);
+      expect(movie.name).toEqual("Alladin");
+
+    });
+  })
 </b>
 </pre>
     </article>
