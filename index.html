@@ -846,6 +846,68 @@ function getMovieInfoByAjax() {
     </article>
   </slide>
 
+  
+  <slide>
+    <hgroup>
+      <h2>Testando Javascript e Ajax</h2>
+      <h3>Visão geral</h3>
+    </hgroup>
+    <article>
+      <ul class="build fade">
+	<li>Jasmine é um arcabouço de testes que utiliza as práticas de TDD para testar códigos em javascript e que suporta as mesmas práticas de TDD do RSpec, além de mimetizá-las</li>
+    	<li><b>describe</b> é uma função global que inicia-se juntamente com a suíte de testes e recebe dois parâmetros: uma <b>string</b>, o título da suíte de especificação e uma <b>function</b>, o bloco de código que implementa a suíte</li>
+    	<li><b>it</b> é uma função global onde são definidas as especificações (<label class="english">Specs</label>). Assim como o <b>describe</b>, ela recebe dois parâmetros: uma <b>string</b>, título da especificação e uma <b>function</b>, o teste</li>
+    	<li><b>expect</b> é a ação/valor esperado como resposta do teste. Ele recebe o valor atual e vincula-o com uma função <label class="english">Matcher</label> que recebe o valor esperado</li>
+    	<li><label class="english"><b>Matchers</b></label> implementam uma comparação entre o valor atual e o esperado, reportando ao Jasmine se a expectativa foi atendida (<label class="blue3"><b>true</b></label>) ou não (<label class="blue3"><b>false</b></label>)</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Testando Javascript e Ajax</h2>
+      <h3>Javascript</h3>
+    </hgroup>
+    <article>
+<pre class="prettyprint" data-lang="javascript">
+<b>describe("Included matchers:", function() {
+
+  it("The 'toBe' matcher compares with ===", function() {
+    var a = 12;
+    var b = a;
+
+    expect(a).toBe(b);
+    expect(a).not.toBe(null);
+  });
+});
+</b></pre>
+    </article>
+  </slide>
+
+
+  <slide>
+    <hgroup>
+      <h2>Testando Javascript e Ajax</h2>
+      <h3>Ajax</h3>
+    </hgroup>
+    <article>
+<pre class="prettyprint" data-lang="javascript">
+<b>describe("Ajax Tests", function() {
+    var configuration = { 
+      url: "https://blueberry-custard-87466.herokuapp.com/movies/3/to_json",
+        remainingCallTime: 10000 
+    };
+});
+            
+it("should make an Ajax request to the correct URL", function() {
+  spyOn($, "ajax");
+  sendRequest(undefined, configuration);
+  expect($.ajax.mostRecentCall.args[0]["url"]).toEqual(configuration.url);
+});
+</b></pre>
+    </article>
+  </slide>
+
 
   <slide>
     <hgroup>
@@ -900,6 +962,7 @@ function successMovieJSON(json) {
 </pre>
     </article>
   </slide>
+<<<<<<< HEAD
   
   <slide>
     <hgroup>
@@ -960,6 +1023,9 @@ it("should make an Ajax request to the correct URL", function() {
     </pre>
     </article>
   </slide>
+=======
+
+>>>>>>> c62286bbfaac52274001972ed60a5409b7c7f6bf
 
   <slide>
     <hgroup>
